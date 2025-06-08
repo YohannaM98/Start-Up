@@ -28,8 +28,6 @@ nav{
 .overlay {
   z-index: 2;
   position: absolute;
-  top: 0;
-  left: 0;
   height: 100%;
   width: 100%;
   background-color: black;
@@ -43,22 +41,16 @@ nav{
     z-index: 3;
     position: absolute;
     align-self: center;
-    justify-items: ce
     width: 50rem;
-  
 }
 
 .LOGO-bg{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 23rem;
     width: fit-content;
     background-color: rgb(254, 247, 199);
 }
 .hero-logo p{
     position: absolute;
-    text-align: start;
     bottom: 3rem;
     width: 70%;
     font-size: 27px;
@@ -101,4 +93,131 @@ nav{
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 6px;
+}
+.about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85rem;
+    height:40rem;
+    padding-top: -20rem; 
+}
+.about-img{
+    width: 100%;
+    overflow: hidden;
+    opacity: 30%;
+}
+.about-text{
+    position: absolute;
+    top: 75rem;
+    text-align:  center;
+    width: 70rem;
+}
+.about-text h1{
+    font-size: 70px;
+}
+.about-text p{
+    font-size: 30px;
+}
+.Features{
+    background-color:rgb(254, 247, 199);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+.Features h1{
+    font-size: 70px;
+    margin:2rem;
+}
+.feature-1{
+    width: 50rem;
+    height: 82rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 2rem;
+    background-color: white;
+    align-items: center;
+}
+.feature-1-intro{
+    width: 50rem;
+    height:40rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.feature-1-intro img{
+    width:100%;
+    z-index: 1;
+    overflow: hidden;
+}
+.overlay2{
+  z-index: 2;
+  position: absolute;
+  width:100% ;
+  height:100%;
+  background-color: black;
+  opacity: 0.4; 
+  pointer-events: none;
+}
+.feature-1-intro h2{
+    position: absolute;
+    z-index: 3;
+    justify-self: end;
+    bottom: 0;
+    font-size: 50px;
+    color: white;
+    letter-spacing: 3px;
+}
+.feature-1-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+}
+.feature-1-body p{
+    font-size: 27px;
+    width: 98%;
+    text-align: center;
+    margin-top: 10px;
+}
+.key-1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 10rem;
+    width: 45rem;
+}
+.key-1 h3{
+    font-size: 45px;
+    margin-top: 20px;
+}
+.key-1 h4{
+    font-size: 32px;
+    margin-top: 10px;
+}
+.key-1 p{
+    width: 90%;
+    text-align: center;
+    margin: 10px 0;
+}
+.key-1-img img{
+    width: 13rem;
+    height: 8rem;
+    margin: 5px;
+    margin-top: 2rem;
+}
+.feature-1 button{
+    width: 10rem;
+    background-color: rgb(254, 247, 199);
+    position: absolute;
+    bottom: 0;
+    border: 0;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 20px;
+    border-radius: 0.6rem;
 }
