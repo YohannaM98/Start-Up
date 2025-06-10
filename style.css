@@ -434,5 +434,79 @@ nav{
     border-radius: 0.6rem;
     align-self: flex-end;
 }
-
-
+.our-chat{
+    display: flex;
+    gap: 2rem;
+    height: 40rem;
+    padding: 2rem 5rem;
+    background:linear-gradient(125deg, rgb(254, 247, 199), rgb(129, 151, 77));
+}
+.chat-explain{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+    gap:3rem;
+}
+.chat-explain h2{
+    font-size: 60px;
+}
+.chat-explain h1{
+    font-size: 70px;
+}
+.chat-explain p{
+    font-size: 35px;
+}
+.chat{
+    background-color: rgb(123, 146, 70);
+    display: flex;
+    flex-direction: column;
+    width:40%;
+    height:35rem;
+    position: relative;
+    border-radius: 20px;
+    align-items: center;
+    padding: 2rem;
+}
+.chat-logo{
+    background-color: rgb(254, 247, 199);
+    border-radius: 5px;
+    width: 4rem;
+    height: 4rem;
+}
+.chat-logo img{
+    height: 100%;
+    width: 100%;
+}
+.chat h4{
+    color: white;
+    font-size: 40px;
+}
+.chat-text{
+    background-color: white;
+    border-radius:10px;
+    display: flex;
+    position: absolute;
+    bottom: 2rem;
+    z-index: 1;
+    height:25rem;
+    width:25rem;
+}
+.chat-text input{
+    background-color: #ccc;
+    height: 10%;
+    width:83%;
+    position: absolute;
+    bottom: 0;
+    border: 0;
+    border-radius: 3px;
+    margin:1rem;
+}
+.chat-text img{
+    height:10%;
+    position: absolute;
+    right:-0.5rem;
+    bottom: 0;
+    margin:1rem;
+}
