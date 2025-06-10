@@ -12,5 +12,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+const questions = document.querySelectorAll('.faq-question');
+
+questions.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const answer = btn.nextElementSibling;
+
+    // Collapse all others
+    document.querySelectorAll('.faq-answer').forEach((el) => {
+      if (el !== answer) el.classList.remove('open');
+    });
+
+    // Toggle current one
+    answer.classList.toggle('open');
+  });
+});
+<script>
+  // Show button when page is scrolled down 100px
+  window.onscroll = function() {
+    const btn = document.getElementById("backToTop");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+
+
+
 
 
