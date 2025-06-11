@@ -65,7 +65,7 @@ They can reach the team via email at support@startup.ai or through the contact f
 To become a leading provider of accessible AI tools that empower small businesses to scale smartly.
 `;
 
-  const chat = puter.ai.chat({ system: context });
+
   const chatOutput = document.getElementById("chat-output");
   const userInput = document.getElementById("user-input");
   const sendBtn = document.getElementById("send-btn");
@@ -77,18 +77,17 @@ To become a leading provider of accessible AI tools that empower small businesse
     chatOutput.appendChild(msgDiv);
     chatOutput.scrollTop = chatOutput.scrollHeight; // auto-scroll
   }
-
-  function handleUserInput() {
+  
+  async function handleUserInput() {
     const userMessage = userInput.value.trim();
     if (!userMessage) return;
 
     appendMessage(userMessage, "user");
 
     // Simulate bot reply
-    setTimeout(() => {
-      const botReply = "Hi! I'm your virtual assistant.";
+      const botReply = await puter.ai.chat({ system: context });
       appendMessage(botReply, "bot");
-    }, 500);
+
 
     userInput.value = "";
   }
