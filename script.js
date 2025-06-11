@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 const questions = document.querySelectorAll('.faq-question');
-
 questions.forEach((btn) => {
   btn.addEventListener('click', () => {
     const answer = btn.nextElementSibling;
@@ -27,18 +26,51 @@ questions.forEach((btn) => {
     answer.classList.toggle('open');
   });
 });
-<script>
-  // Show button when page is scrolled down 100px
-  window.onscroll = function() {
-    const btn = document.getElementById("backToTop");
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-      btn.style.display = "block";
-    } else {
-      btn.style.display = "none";
-    }
-  };
+const context = `
+You are a helpful assistant for a startup chatbot. Use the following info to answer ONLY these five questions:
 
+1. Who founded the startup?  
+The startup was founded by a group of passionate students and tech enthusiasts in 2024.
 
+2. What problems does it solve?  
+It addresses communication gaps in startups by providing AI-powered chat interfaces for customer support and engagement.
 
+3. What services or products does it offer?  
+It offers customizable chatbot solutions, knowledge bases, and integration tools for websites.
 
+4. How can someone support or contact the team?  
+They can reach the team via email at support@startup.ai or through the contact form on their website.
 
+5. What’s the startup’s vision or long-term goal?  
+To become a leading provider of accessible AI tools that empower small businesses to scale smartly.
+`;
+
+  const chat = puter.ai.chat({ system: context });
+
+  const input = document.getElementById('user-input');
+  const sendBtn = document.getElementById('send-btn');
+  const output = document.getElementById('chat-output');
+
+  function appendMessage(text, className) {
+    const msg = document.createElement('div');
+    msg.className = `msg ${className}`;
+    msg.innerText = text;
+    output.appendChild(msg);
+    output.scrollTop = output.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const question = input.value.trim();
+    if (!question) return;
+
+    appendMessage("You: " + question, 'user');
+    input.value = "";
+
+    const reply = await chat.ask(question);
+    appendMessage("Chaty: " + reply, 'bot');
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+  input.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') sendMessage();
+  });
