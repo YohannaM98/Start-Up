@@ -1,24 +1,4 @@
-
-document.addEventListener("DOMContentLoaded", () => {
-      const toggle = document.getElementById("audienceSwitch");
-      const label = document.getElementById("audienceLabel");
-      const employee = document.getElementById("employeeContent");
-      const employer = document.getElementById("employerContent");
-
-      toggle.addEventListener("change", () => {
-        if (toggle.checked) {
-          employee.classList.remove("show");
-          employer.classList.add("show");
-          label.textContent = "For Employers";
-        } else {
-          employer.classList.remove("show");
-          employee.classList.add("show");
-          label.textContent = "For Employees";
-        }
-      });
-    });
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const container = document.getElementById("scroll-container");
   const dots = document.querySelectorAll(".dot");
 
@@ -46,7 +26,8 @@ questions.forEach((btn) => {
     answer.classList.toggle('open');
   });
 });
-const context = `
+
+  const context = `
 You are a helpful assistant for a startup chatbot. Use the following info to answer ONLY these five questions:
 
 1. Who founded the startup?  
@@ -65,38 +46,37 @@ They can reach the team via email at support@startup.ai or through the contact f
 To become a leading provider of accessible AI tools that empower small businesses to scale smartly.
 `;
 
+  const input = document.getElementById('user-input');
+  const sendBtn = document.getElementById('send-btn');
+  const output = document.getElementById('chat-output');
 
-  const chatOutput = document.getElementById("chat-output");
-  const userInput = document.getElementById("user-input");
-  const sendBtn = document.getElementById("send-btn");
-
-  function appendMessage(message, sender) {
-    const msgDiv = document.createElement("div");
-    msgDiv.classList.add("msg", sender);
-    msgDiv.textContent = message;
-    chatOutput.appendChild(msgDiv);
-    chatOutput.scrollTop = chatOutput.scrollHeight; // auto-scroll
-  }
-  
-  async function handleUserInput() {
-    const userMessage = userInput.value.trim();
-    if (!userMessage) return;
-
-    appendMessage(userMessage, "user");
-
-    // Simulate bot reply
-      const botReply = await puter.ai.chat({ system: context });
-      appendMessage(botReply, "bot");
-
-
-    userInput.value = "";
+  function appendMessage(text, className) {
+    const msg = document.createElement('div');
+    msg.className = `msg ${className}`;
+    msg.innerText = text;
+    output.appendChild(msg);
+    output.scrollTop = output.scrollHeight;
   }
 
-  sendBtn.addEventListener("click", handleUserInput);
-  userInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleUserInput();
+  async function sendMessage() {
+    const question = input.value.trim();
+    if (!question) return;
+
+    input.value = "";
+
+    // Prepend context directly to the user's question
+    const fullPrompt = `${context}\nUser: ${question}`;
+
+    const reply = await puter.ai.chat(fullPrompt); // Removed system param
+
+    appendMessage("Chaty: " + reply, 'bot');
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+
+  input.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      sendMessage();
     }
   });
 
