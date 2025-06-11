@@ -1,3 +1,23 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("audienceSwitch");
+      const label = document.getElementById("audienceLabel");
+      const employee = document.getElementById("employeeContent");
+      const employer = document.getElementById("employerContent");
+
+      toggle.addEventListener("change", () => {
+        if (toggle.checked) {
+          employee.classList.remove("show");
+          employer.classList.add("show");
+          label.textContent = "For Employers";
+        } else {
+          employer.classList.remove("show");
+          employee.classList.add("show");
+          label.textContent = "For Employees";
+        }
+      });
+    });
+
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("scroll-container");
   const dots = document.querySelectorAll(".dot");
@@ -46,31 +66,52 @@ To become a leading provider of accessible AI tools that empower small businesse
 `;
 
   const chat = puter.ai.chat({ system: context });
+  const chatOutput = document.getElementById("chat-output");
+  const userInput = document.getElementById("user-input");
+  const sendBtn = document.getElementById("send-btn");
 
-  const input = document.getElementById('user-input');
-  const sendBtn = document.getElementById('send-btn');
-  const output = document.getElementById('chat-output');
-
-  function appendMessage(text, className) {
-    const msg = document.createElement('div');
-    msg.className = `msg ${className}`;
-    msg.innerText = text;
-    output.appendChild(msg);
-    output.scrollTop = output.scrollHeight;
+  function appendMessage(message, sender) {
+    const msgDiv = document.createElement("div");
+    msgDiv.classList.add("msg", sender);
+    msgDiv.textContent = message;
+    chatOutput.appendChild(msgDiv);
+    chatOutput.scrollTop = chatOutput.scrollHeight; // auto-scroll
   }
 
-  async function sendMessage() {
-    const question = input.value.trim();
-    if (!question) return;
+  function handleUserInput() {
+    const userMessage = userInput.value.trim();
+    if (!userMessage) return;
 
-    appendMessage("You: " + question, 'user');
-    input.value = "";
+    appendMessage(userMessage, "user");
 
-    const reply = await chat.ask(question);
-    appendMessage("Chaty: " + reply, 'bot');
+    // Simulate bot reply
+    setTimeout(() => {
+      const botReply = "Hi! I'm your virtual assistant.";
+      appendMessage(botReply, "bot");
+    }, 500);
+
+    userInput.value = "";
   }
 
-  sendBtn.addEventListener('click', sendMessage);
-  input.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') sendMessage();
+  sendBtn.addEventListener("click", handleUserInput);
+  userInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleUserInput();
+    }
+  });
+
+  // Back to top functionality
+  const backToTopBtn = document.getElementById("backToTop");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+  });
+
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });

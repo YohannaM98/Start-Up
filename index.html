@@ -25,6 +25,50 @@
             <input type="text" placeholder="nurse" />
         </div>
     </div>
+    <div class="audience-toggle">
+    <label class="switch">
+      <input type="checkbox" id="audienceSwitch">
+      <span class="slider round"></span>
+    </label>
+    <span id="audienceLabel">For Employees</span>
+  </div>
+
+  <div id="employeeContent" class="audience-content show">
+    <h2>Welcome, Employees!</h2>
+    <p>This section provides resources and tools for employees.</p>
+  </div>
+
+  <div id="employerContent" class="audience-content">
+  <h2>Welcome, Employers!</h2>
+  <p>This section offers management tools and resources for employers.</p>
+
+  <h3>Why Partner With Us?</h3>
+  <p>Gain access to a talented pool of professionals, streamline your hiring process, and enhance your company brand by working with dedicated and skilled employees.</p>
+
+  <h3>Featured Employer Benefits:</h3>
+  <ul>
+    <li>Access to pre-vetted candidates</li>
+    <li>Custom recruitment solutions</li>
+    <li>Employer branding opportunities</li>
+    <li>Dedicated account management</li>
+  </ul>
+
+  <div class="testimonial-section">
+    <h3>What Employers Say</h3>
+
+    <div class="testimonial">
+      <p>“Hiring through this platform helped us cut our recruitment time in half and connect with incredible talent.”</p>
+      <p><strong>– Amanuel D., HR Director at TechNova</strong></p>
+    </div>
+
+    <div class="testimonial">
+      <p>“We’ve built a strong team thanks to their streamlined process and support. Truly a game changer for our hiring strategy.”</p>
+      <p><strong>– Eleni T., COO at BrightWorks</strong></p>
+    </div>
+  </div>
+</div>
+
+
     <div class="about">
         <div class="about-img">
             <img src="Assets/Logo(black,crop).png" class="about-img">
@@ -189,8 +233,8 @@
             </div>
             <h4>Our Chat</h4>
             <div class="chat-text">
-                <div class="chat-messages" id="chat-output"></div>
-                <input type="text" id="user-input" placeholder="Ask anything" />
+                <div id="chat-output"></div>
+                <input type="text" id="user-input" placeholder="Ask about our company" />
                 <img src="Assets/send.svg" id="send-btn" alt="Send" />
             </div>
         </div>
@@ -237,6 +281,8 @@
         </div>
     </footer>
     <button id="backToTop" title="Go to top">↑</button>
+<script src="https://js.puter.com/v2/"></script>
 <script src="script.js"></script>
+<button id="backToTop" title="Back to top">↑</button>
 </body>
 </html>
